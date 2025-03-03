@@ -1,0 +1,1 @@
+D:\Code\flutter projects\bookly_app\build\app\intermediates\cxx\Debug\86z4l4x2\obj\arm64-v8a
