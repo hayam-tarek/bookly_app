@@ -10,7 +10,10 @@ class CustomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset(AppAssets.logo, width: 100),
+        Image.asset(
+          AppAssets.logo,
+          width: MediaQuery.sizeOf(context).width * 0.25,
+        ),
         IconButton(
           icon: const Icon(Icons.search),
           onPressed: () {},
