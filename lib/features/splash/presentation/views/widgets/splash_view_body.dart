@@ -1,5 +1,6 @@
-import 'package:bookly_app/core/utils/assets.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
@@ -11,12 +12,26 @@ class SplashViewBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 16,
         children: [
           SizedBox(
             width: double.infinity,
           ),
-          Image.asset(
-            AppAssets.logo,
+          DefaultTextStyle(
+            style: GoogleFonts.limelight(
+              fontSize: MediaQuery.of(context).size.width * 0.20,
+            ),
+            child: AnimatedTextKit(
+              animatedTexts: [
+                WavyAnimatedText(
+                  'Bookly',
+                ),
+              ],
+              isRepeatingAnimation: false,
+            ),
+          ),
+          Text(
+            "Read Freely, Anytime, Anywhere!",
           ),
         ],
       ),

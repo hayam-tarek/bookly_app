@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "Bookly"
-    ]
+    ],
+    "cmake.ignoreCMakeListsMissing": true
 }
