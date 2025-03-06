@@ -17,6 +17,8 @@ class BestSellerItem extends StatelessWidget {
       title: Text(
         "Book Title",
         style: TextStyles.textStyle16Bold,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
       ),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +35,7 @@ class BestSellerItem extends StatelessWidget {
               ),
               Spacer(),
               const Icon(
-                Icons.star,
+                Icons.star_rate_rounded,
                 color: Colors.yellow,
               ),
               Text(

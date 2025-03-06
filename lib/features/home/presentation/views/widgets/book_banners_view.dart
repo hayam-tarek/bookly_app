@@ -7,12 +7,15 @@ class BookBannersView extends StatelessWidget {
   final CarouselController _carouselController = CarouselController();
   @override
   Widget build(BuildContext context) {
-    return CarouselView(
-      controller: _carouselController,
-      itemExtent: MediaQuery.sizeOf(context).width * 0.40,
-      children: List.generate(
-        10,
-        (index) => BookBannerItem(),
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.25,
+      child: CarouselView(
+        controller: _carouselController,
+        itemExtent: MediaQuery.sizeOf(context).width * 0.40,
+        children: List.generate(
+          10,
+          (index) => BookBannerItem(),
+        ),
       ),
     );
   }
