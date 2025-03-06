@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:bookly_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +12,17 @@ class HomeViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const CustomAppBar(),
           SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.25,
             child: BookBannersView(),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            "Best sellers",
+            style: TextStyles.textStyle20Bold,
           ),
         ],
       ),
