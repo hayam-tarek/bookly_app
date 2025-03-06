@@ -1,6 +1,7 @@
 import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:bookly_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'best_seller_item.dart';
 import 'book_banners_view.dart';
@@ -13,6 +14,7 @@ class HomeViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(
+        controller: Get.find<ScrollController>(),
         slivers: [
           SliverToBoxAdapter(
             child: const CustomAppBar(),
