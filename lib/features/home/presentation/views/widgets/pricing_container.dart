@@ -1,4 +1,4 @@
-import 'package:bookly_app/core/utils/text_styles.dart';
+import 'package:bookly_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class PricingContainer extends StatelessWidget {
@@ -11,49 +11,23 @@ class PricingContainer extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: TextButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                shape: WidgetStatePropertyAll(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                    ),
-                  ),
-                ),
-                backgroundColor: WidgetStatePropertyAll(Colors.white),
-              ),
-              child: Text(
-                r"500$",
-                style: TextStyles.textStyle16Bold.copyWith(
-                  color: Colors.orangeAccent,
-                ),
-              ),
+          CustomButton(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(0),
+              bottomLeft: Radius.circular(20),
             ),
+            text: r"500$",
+            color: Colors.white,
+            textColor: Colors.orangeAccent,
           ),
-          Expanded(
-            child: TextButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                shape: WidgetStatePropertyAll(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    ),
-                  ),
-                ),
-                backgroundColor: WidgetStatePropertyAll(Colors.orange),
-              ),
-              child: Text(
-                "Free Preview",
-                style: TextStyles.textStyle16Bold.copyWith(
-                  color: Colors.white,
-                ),
-              ),
+          CustomButton(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(20),
+              bottomRight: Radius.circular(0),
             ),
+            text: "Free Preview",
+            color: Colors.orangeAccent,
+            textColor: Colors.white,
           ),
         ],
       ),
