@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'widgets/home_view_body.dart';
 
@@ -15,7 +14,6 @@ class _HomeViewState extends State<HomeView> {
   final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
-    Get.put(_scrollController);
     return Scaffold(
       floatingActionButton: showFAB
           ? FloatingActionButton(
@@ -38,7 +36,7 @@ class _HomeViewState extends State<HomeView> {
             });
             return true;
           },
-          child: HomeViewBody(),
+          child: HomeViewBody(scrollController: _scrollController),
         ),
       ),
     );

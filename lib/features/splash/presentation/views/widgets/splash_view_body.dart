@@ -1,8 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:bookly_app/core/utils/constant.dart';
-import 'package:bookly_app/features/home/presentation/views/home_view.dart';
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SplashViewBody extends StatelessWidget {
@@ -10,7 +9,7 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    navigateToHomeView();
+    navigateToHomeView(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,12 +39,13 @@ class SplashViewBody extends StatelessWidget {
     );
   }
 
-  void navigateToHomeView() {
+  void navigateToHomeView(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(const Duration(seconds: 3), () {
-        Get.to(HomeView(),
-            transition: Transition.rightToLeft,
-            duration: viewtransitionDuration);
+        // Get.to(HomeView(),
+        //     transition: Transition.rightToLeft,
+        //     duration: viewtransitionDuration);
+        if (context.mounted) GoRouter.of(context).go(AppRouter.homeView);
       });
     });
   }

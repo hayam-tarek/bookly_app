@@ -1,7 +1,7 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/text_styles.dart';
-import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
@@ -10,7 +10,7 @@ class BestSellerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(BookDetailsView());
+        GoRouter.of(context).push(AppRouter.bookDetailsView);
       },
       child: ListTile(
         contentPadding: EdgeInsets.all(0),
