@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/text_styles.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/rating.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -40,18 +41,7 @@ class BestSellerItem extends StatelessWidget {
                   style: TextStyles.textStyle14Bold,
                 ),
                 Spacer(),
-                const Icon(
-                  Icons.star_rate_rounded,
-                  color: Colors.yellow,
-                ),
-                Text(
-                  " 4.5 ",
-                  style: TextStyles.textStyle16Bold,
-                ),
-                Text(
-                  "(1000)",
-                  style: TextStyles.textStyle14,
-                ),
+                RatingWithNumbers()
               ],
             )
           ],
