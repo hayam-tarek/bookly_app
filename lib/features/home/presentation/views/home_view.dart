@@ -21,11 +21,7 @@ class _HomeViewState extends State<HomeView> {
           ? FloatingActionButton(
               mini: true,
               onPressed: () {
-                _scrollController.animateTo(
-                  0.0,
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.easeInOut,
-                );
+                animateToBeginning();
               },
               child: const Icon(Icons.arrow_upward_rounded),
             )
@@ -45,6 +41,14 @@ class _HomeViewState extends State<HomeView> {
           child: HomeViewBody(),
         ),
       ),
+    );
+  }
+
+  void animateToBeginning() {
+    _scrollController.animateTo(
+      0.0,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
     );
   }
 }
