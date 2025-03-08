@@ -13,8 +13,8 @@ class PricingContainer extends StatelessWidget {
         children: [
           CustomButton(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(0),
-              bottomLeft: Radius.circular(20),
+              topLeft: Radius.circular(20),
+              bottomLeft: Radius.circular(0),
             ),
             text: r"500$",
             color: Colors.white,

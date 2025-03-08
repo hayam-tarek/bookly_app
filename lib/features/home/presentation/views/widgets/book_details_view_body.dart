@@ -37,8 +37,36 @@ class BookDetailsViewBody extends StatelessWidget {
           ),
           RatingWithNumbers(),
           PricingContainer(),
+          SizedBox(height: 50),
+          Text(
+            "You can also like",
+            style: TextStyles.textStyle16Bold,
+          ),
+          Expanded(
+            child: SimilarBooksListView(),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class SimilarBooksListView extends StatelessWidget {
+  const SimilarBooksListView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: 5,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
+          child: BookBannerItem(),
+        );
+      },
     );
   }
 }

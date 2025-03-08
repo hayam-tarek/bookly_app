@@ -5,14 +5,15 @@ class BookBannerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // height: MediaQuery.sizeOf(context).height * 0.25,
-      // width: MediaQuery.sizeOf(context).width * 0.40,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
-          fit: BoxFit.fill,
-          image: NetworkImage("https://picsum.photos/seed/picsum/200/300"),
+    return AspectRatio(
+      aspectRatio: 2 / 3,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: NetworkImage("https://picsum.photos/seed/picsum/200/300"),
+          ),
         ),
       ),
     );
