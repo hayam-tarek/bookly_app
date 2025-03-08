@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/themes/app_colors.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class PricingContainer extends StatelessWidget {
             ),
             text: r"500$",
             color: Colors.white,
-            textColor: Colors.orangeAccent,
+            textColor: AppColors.secondaryColor,
           ),
           CustomButton(
             borderRadius: BorderRadius.only(
@@ -26,7 +27,7 @@ class PricingContainer extends StatelessWidget {
               bottomRight: Radius.circular(0),
             ),
             text: "Free Preview",
-            color: Colors.orangeAccent,
+            color: AppColors.secondaryColor,
             textColor: Colors.white,
           ),
         ],
