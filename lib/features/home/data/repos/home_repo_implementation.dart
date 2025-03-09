@@ -1,6 +1,5 @@
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
-
-import 'package:bookly_app/api/api_service.dart';
+import 'package:bookly_app/core/api/api_service.dart';
+import 'package:bookly_app/core/api/end_points.dart';
 import 'package:bookly_app/core/errors/failure.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo.dart';
@@ -22,9 +21,8 @@ class HomeRepoImplementation implements HomeRepo {
       var data = await apiService.get(endPoint: Endpoints.getNewestBooks);
       List<BookModel> newestBooks = [];
       for (var item in data[ApiKeys.items]) {
-        newestBooks.add(BookModel.fromJson(item));
+        newestBooks.add(BookModel.fromMap(item));
       }
-      log('newestBooks: $newestBooks');
       return Right(newestBooks);
     } on Exception catch (e) {
       return Left(ServerFailure());
