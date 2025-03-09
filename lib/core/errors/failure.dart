@@ -31,7 +31,7 @@ class ServerFailure extends Failure {
   }
   factory ServerFailure.fromResponse(int statusCode, dynamic data) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(message: data['message']);
+      return ServerFailure(message: data['error']['message']);
     } else if (statusCode == 404) {
       return ServerFailure(message: 'Not found, please try again');
     } else if (statusCode == 500) {
