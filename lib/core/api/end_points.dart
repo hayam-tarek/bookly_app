@@ -15,7 +15,7 @@ class Endpoints {
     String? sorting,
     String? filtering,
   }) {
-    return 'volumes?Filtering=$filtering&q=$query&Sorting=$sorting';
+    return 'volumes?Filtering=$filtering&q=subject:$query&orderBy=$sorting';
   }
 }
 
@@ -25,7 +25,14 @@ class ApiKeys {
   static const String items = 'items';
   static const String query = 'q'; // Query Parameters
   static const String programming = 'programming';
-  static const String filter = 'Filter'; // Query Parameters
+  static const String intitle = 'intitle:';
+  static const String inauthor = 'inauthor:';
+  static const String inpublisher = 'inpublisher:';
+  static const String subject = 'subject:';
+  static const String isbn = 'isbn:';
+  static const String lccn = 'lccn:';
+  static const String oclc = 'oclc:';
+  static const String filter = 'filter'; // Query Parameters
   static const String freeEbooks = 'free-ebooks';
   static const String paidEbooks = 'paid-ebooks';
   static const String ebook = 'ebook';

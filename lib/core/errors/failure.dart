@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 
-class Failure {}
+class Failure {
+  final String message;
+  Failure(this.message);
+}
 
 class ServerFailure extends Failure {
-  final String message;
-  ServerFailure({required this.message});
+  ServerFailure({required String message}) : super(message);
 
   factory ServerFailure.fromDioException(DioException dioError) {
     switch (dioError.type) {
@@ -42,10 +44,18 @@ class ServerFailure extends Failure {
   }
 }
 
-class CacheFailure extends Failure {}
+class CacheFailure extends Failure {
+  CacheFailure(super.message);
+}
 
-class NetworkFailure extends Failure {}
+class NetworkFailure extends Failure {
+  NetworkFailure(super.message);
+}
 
-class LocalFailure extends Failure {}
+class LocalFailure extends Failure {
+  LocalFailure(super.message);
+}
 
-class UnknownFailure extends Failure {}
+class UnknownFailure extends Failure {
+  UnknownFailure(super.message);
+}
