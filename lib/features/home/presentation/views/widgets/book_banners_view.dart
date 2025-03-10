@@ -1,4 +1,7 @@
+import 'package:bookly_app/core/widgets/custom_loading_widget.dart';
+import 'package:bookly_app/features/home/presentation/view_model/featured_books/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'book_banner_item.dart';
 
@@ -7,16 +10,32 @@ class BookBannersView extends StatelessWidget {
   final CarouselController _carouselController = CarouselController();
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.25,
-      child: CarouselView(
-        controller: _carouselController,
-        itemExtent: MediaQuery.sizeOf(context).width * 0.40,
-        children: List.generate(
-          10,
-          (index) => BookBannerItem(),
-        ),
-      ),
+    return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
+      builder: (context, state) {
+        if (state is FeaturedBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.25,
+            child: CarouselView(
+              controller: _carouselController,
+              itemExtent: MediaQuery.sizeOf(context).width * 0.40,
+              children: List.generate(
+                10,
+                (index) => BookBannerItem(),
+              ),
+            ),
+          );
+        } else if (state is FeaturedBooksFailure) {
+          return Center(
+            child: ErrorWidget(state.message),
+          );
+        } else if (state is FeaturedBooksLoading) {
+          return const Center(
+            child: CustomLoadingWidget(),
+          );
+        } else {
+          return Container();
+        }
+      },
     );
   }
 }
