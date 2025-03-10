@@ -48,7 +48,6 @@ class DioService extends ApiService {
       Object? data,
       Map<String, dynamic>? queryParameters,
       bool isFromData = false}) {
-    // TODO: implement delete
     throw UnimplementedError();
   }
 
@@ -58,7 +57,6 @@ class DioService extends ApiService {
       Object? data,
       Map<String, dynamic>? queryParameters,
       bool isFromData = false}) {
-    // TODO: implement patch
     throw UnimplementedError();
   }
 
@@ -68,7 +66,6 @@ class DioService extends ApiService {
       Object? data,
       Map<String, dynamic>? queryParameters,
       bool isFromData = false}) {
-    // TODO: implement post
     throw UnimplementedError();
   }
 }
