@@ -20,7 +20,9 @@ class BookDetailsSection extends StatelessWidget {
         SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.55,
           height: MediaQuery.sizeOf(context).height * 0.35,
-          child: BookBannerItem(),
+          child: BookBannerItem(
+            imageUrl: "https://picsum.photos/seed/picsum/200/300",
+          ),
         ),
         Text(
           "Book Title",

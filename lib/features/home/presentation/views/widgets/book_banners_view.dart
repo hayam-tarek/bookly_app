@@ -19,8 +19,11 @@ class BookBannersView extends StatelessWidget {
               controller: _carouselController,
               itemExtent: MediaQuery.sizeOf(context).width * 0.40,
               children: List.generate(
-                10,
-                (index) => BookBannerItem(),
+                state.books.length,
+                (index) => BookBannerItem(
+                  imageUrl:
+                      state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                ),
               ),
             ),
           );
