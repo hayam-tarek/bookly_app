@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomLoadingWidget extends StatelessWidget {
@@ -5,6 +6,8 @@ class CustomLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator();
+    return CircularProgressIndicator(
+      color: AppColors.secondaryColor,
+    );
   }
 }
