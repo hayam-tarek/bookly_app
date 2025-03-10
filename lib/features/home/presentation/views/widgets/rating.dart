@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 class RatingWithNumbers extends StatelessWidget {
   const RatingWithNumbers({
     super.key,
+    required this.rating,
+    required this.totalRatings,
   });
+  final String rating;
+  final String totalRatings;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +20,11 @@ class RatingWithNumbers extends StatelessWidget {
           color: Colors.yellow,
         ),
         Text(
-          " 4.5 ",
+          " $rating ",
           style: TextStyles.textStyle16Bold,
         ),
         Text(
-          "(1000)",
+          "($totalRatings)",
           style: TextStyles.textStyle14,
         ),
       ],

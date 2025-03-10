@@ -35,7 +35,10 @@ class BookDetailsSection extends StatelessWidget {
             fontStyle: FontStyle.italic,
           ),
         ),
-        RatingWithNumbers(),
+        RatingWithNumbers(
+          rating: "4.5",
+          totalRatings: "100",
+        ),
         PricingContainer(),
       ],
     );
