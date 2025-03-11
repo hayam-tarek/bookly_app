@@ -23,16 +23,12 @@ class NewestBooksView extends StatelessWidget {
             ),
           );
         } else if (state is NewestBooksFailure) {
-          return SliverToBoxAdapter(
-            child: Center(
-              child: CustomErrorWidget(message: state.message),
-            ),
+          return SliverFillRemaining(
+            child: CustomErrorWidget(message: state.message),
           );
         } else if (state is NewestBooksLoading) {
           return SliverFillRemaining(
-            child: Center(
-              child: CustomLoadingWidget(),
-            ),
+            child: CustomLoadingWidget(),
           );
         } else {
           return SliverToBoxAdapter(

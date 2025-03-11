@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_widget.dart';
 import 'package:bookly_app/features/home/presentation/view_model/featured_books/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class BookBannersView extends StatelessWidget {
           );
         } else if (state is FeaturedBooksFailure) {
           return Center(
-            child: ErrorWidget(state.message),
+            child: CustomErrorWidget(message: state.message),
           );
         } else if (state is FeaturedBooksLoading) {
           return const Center(
