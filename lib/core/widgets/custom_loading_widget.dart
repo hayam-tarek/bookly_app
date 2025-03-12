@@ -10,8 +10,8 @@ class CustomLoadingWidget extends StatelessWidget {
     return Center(
       child: Lottie.asset(
         AppAssets.bookAnimation,
-        width: MediaQuery.sizeOf(context).width / 3,
-        height: MediaQuery.sizeOf(context).height / 5,
+        width: MediaQuery.sizeOf(context).width / 3.5,
+        height: MediaQuery.sizeOf(context).height / 6,
         fit: BoxFit.scaleDown,
       ),
     );

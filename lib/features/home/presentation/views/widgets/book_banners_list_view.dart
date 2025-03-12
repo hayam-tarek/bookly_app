@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'book_banner_item.dart';
 
-class BookBannersView extends StatelessWidget {
-  BookBannersView({super.key});
+class BookBannersListView extends StatelessWidget {
+  BookBannersListView({super.key});
   final CarouselController _carouselController = CarouselController();
   @override
   Widget build(BuildContext context) {

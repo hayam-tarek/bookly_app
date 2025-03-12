@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'book_card_info.dart';
 
-class NewestBooksView extends StatelessWidget {
-  const NewestBooksView({
+class NewestBooksListView extends StatelessWidget {
+  const NewestBooksListView({
     super.key,
   });
 
