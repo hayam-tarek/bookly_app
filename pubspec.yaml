@@ -43,6 +43,7 @@ dependencies:
   lottie: ^3.3.1
   meta: ^1.16.0
   pretty_dio_logger: ^1.4.0
+  skeletonizer: ^1.4.3
 
 dev_dependencies:
   flutter_lints: ^5.0.0
