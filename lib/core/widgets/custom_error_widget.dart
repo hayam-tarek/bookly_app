@@ -6,8 +6,18 @@ class CustomErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(message),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      spacing: 8,
+      children: [
+        Icon(
+          Icons.error_outline_outlined,
+          color: Colors.red,
+        ),
+        Text(message),
+      ],
     );
   }
 }

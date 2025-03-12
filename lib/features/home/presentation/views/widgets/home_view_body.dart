@@ -2,8 +2,8 @@ import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:bookly_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
-import 'book_banners_view.dart';
-import 'newest_books_view.dart';
+import 'book_banners_list_view.dart';
+import 'newest_books_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key, required this.scrollController});
@@ -20,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
             child: const CustomAppBar(),
           ),
           SliverToBoxAdapter(
-            child: BookBannersView(),
+            child: BookBannersListView(),
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -31,7 +31,7 @@ class HomeViewBody extends StatelessWidget {
               ),
             ),
           ),
-          NewestBooksView()
+          NewestBooksListView()
         ],
       ),
     );

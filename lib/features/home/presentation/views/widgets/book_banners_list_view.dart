@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_widget.dart';
 import 'package:bookly_app/features/home/presentation/view_model/featured_books/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'book_banner_item.dart';
 
-class BookBannersView extends StatelessWidget {
-  BookBannersView({super.key});
+class BookBannersListView extends StatelessWidget {
+  BookBannersListView({super.key});
   final CarouselController _carouselController = CarouselController();
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class BookBannersView extends StatelessWidget {
           );
         } else if (state is FeaturedBooksFailure) {
           return Center(
-            child: ErrorWidget(state.message),
+            child: CustomErrorWidget(message: state.message),
           );
         } else if (state is FeaturedBooksLoading) {
           return const Center(

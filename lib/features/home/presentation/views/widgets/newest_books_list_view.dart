@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'book_card_info.dart';
 
-class NewestBooksView extends StatelessWidget {
-  const NewestBooksView({
+class NewestBooksListView extends StatelessWidget {
+  const NewestBooksListView({
     super.key,
   });
 
@@ -23,16 +23,12 @@ class NewestBooksView extends StatelessWidget {
             ),
           );
         } else if (state is NewestBooksFailure) {
-          return SliverToBoxAdapter(
-            child: Center(
-              child: CustomErrorWidget(message: state.message),
-            ),
+          return SliverFillRemaining(
+            child: CustomErrorWidget(message: state.message),
           );
         } else if (state is NewestBooksLoading) {
           return SliverFillRemaining(
-            child: Center(
-              child: CustomLoadingWidget(),
-            ),
+            child: CustomLoadingWidget(),
           );
         } else {
           return SliverToBoxAdapter(
