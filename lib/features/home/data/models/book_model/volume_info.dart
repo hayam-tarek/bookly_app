@@ -16,6 +16,8 @@ class VolumeInfo {
   int? pageCount;
   String? printType;
   List<String>? categories;
+  double? averageRating;
+  int? ratingsCount;
   String? maturityRating;
   bool? allowAnonLogging;
   String? contentVersion;
@@ -37,6 +39,8 @@ class VolumeInfo {
     this.pageCount,
     this.printType,
     this.categories,
+    this.averageRating,
+    this.ratingsCount,
     this.maturityRating,
     this.allowAnonLogging,
     this.contentVersion,
@@ -50,7 +54,7 @@ class VolumeInfo {
 
   @override
   String toString() {
-    return 'VolumeInfo(title: $title, authors: $authors, publisher: $publisher, publishedDate: $publishedDate, description: $description, industryIdentifiers: $industryIdentifiers, readingModes: $readingModes, pageCount: $pageCount, printType: $printType, categories: $categories, maturityRating: $maturityRating, allowAnonLogging: $allowAnonLogging, contentVersion: $contentVersion, panelizationSummary: $panelizationSummary, imageLinks: $imageLinks, language: $language, previewLink: $previewLink, infoLink: $infoLink, canonicalVolumeLink: $canonicalVolumeLink)';
+    return 'VolumeInfo(title: $title, authors: $authors, publisher: $publisher, publishedDate: $publishedDate, description: $description, industryIdentifiers: $industryIdentifiers, readingModes: $readingModes, pageCount: $pageCount, printType: $printType, categories: $categories, averageRating: $averageRating, ratingsCount: $ratingsCount, maturityRating: $maturityRating, allowAnonLogging: $allowAnonLogging, contentVersion: $contentVersion, panelizationSummary: $panelizationSummary, imageLinks: $imageLinks, language: $language, previewLink: $previewLink, infoLink: $infoLink, canonicalVolumeLink: $canonicalVolumeLink)';
   }
 
   factory VolumeInfo.fromMap(Map<String, dynamic> data) => VolumeInfo(
@@ -73,6 +77,8 @@ class VolumeInfo {
         categories: (data['categories'] as List<dynamic>?)
             ?.map((e) => e as String)
             .toList(),
+        averageRating: (data['averageRating'] as num?)?.toDouble(),
+        ratingsCount: data['ratingsCount'] as int?,
         maturityRating: data['maturityRating'] as String?,
         allowAnonLogging: data['allowAnonLogging'] as bool?,
         contentVersion: data['contentVersion'] as String?,
@@ -101,6 +107,8 @@ class VolumeInfo {
         'pageCount': pageCount,
         'printType': printType,
         'categories': categories,
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
         'maturityRating': maturityRating,
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,

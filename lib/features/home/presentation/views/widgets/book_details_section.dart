@@ -36,8 +36,8 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         RatingWithNumbers(
-          rating: "4.5",
-          totalRatings: "100",
+          rating: book.volumeInfo!.averageRating ?? 0.0,
+          totalRatings: book.volumeInfo!.ratingsCount ?? 0,
         ),
         PricingContainer(),
       ],

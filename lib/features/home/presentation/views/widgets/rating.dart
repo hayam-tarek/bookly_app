@@ -7,8 +7,8 @@ class RatingWithNumbers extends StatelessWidget {
     required this.rating,
     required this.totalRatings,
   });
-  final String rating;
-  final String totalRatings;
+  final num rating;
+  final num totalRatings;
 
   @override
   Widget build(BuildContext context) {

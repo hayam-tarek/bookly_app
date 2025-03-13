@@ -1,6 +1,7 @@
 import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/rating.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -45,14 +46,18 @@ class BookCardInfo extends StatelessWidget {
                   style: TextStyles.textStyle14Bold,
                 ),
                 Spacer(),
-                Icon(
-                  Icons.money_off,
-                  color: Colors.lightGreen,
+                RatingWithNumbers(
+                  rating: book.volumeInfo!.averageRating ?? 0.0,
+                  totalRatings: book.volumeInfo!.ratingsCount ?? 0,
                 ),
-                Text(
-                  ' (${book.volumeInfo!.pageCount} pages)',
-                  style: TextStyles.textStyle14Bold,
-                )
+                // Icon(
+                //   Icons.money_off,
+                //   color: Colors.lightGreen,
+                // ),
+                // Text(
+                //   ' (${book.volumeInfo!.pageCount} pages)',
+                //   style: TextStyles.textStyle14Bold,
+                // )
               ],
             )
           ],
