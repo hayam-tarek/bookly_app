@@ -19,7 +19,7 @@ class BookDetailsView extends StatelessWidget {
           create: (context) => RelatedBooksCubit(
             getIt.get<HomeRepoImplementation>(),
           )..fetchRelatedBooks(category: book.volumeInfo!.categories![0]),
-          child: BookDetailsViewBody(),
+          child: BookDetailsViewBody(book: book),
         ),
       ),
     );

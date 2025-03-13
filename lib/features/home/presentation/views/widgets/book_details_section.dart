@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utils/text_styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
 import 'book_banner_item.dart';
@@ -6,10 +7,8 @@ import 'pricing_container.dart';
 import 'rating.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({
-    super.key,
-  });
-
+  const BookDetailsSection({super.key, required this.book});
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,15 +20,16 @@ class BookDetailsSection extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width * 0.55,
           height: MediaQuery.sizeOf(context).height * 0.35,
           child: BookBannerItem(
-            imageUrl: "https://picsum.photos/seed/picsum/200/300",
+            imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
           ),
         ),
         Text(
-          "Book Title",
-          style: TextStyles.textStyle26Bold,
+          book.volumeInfo!.title!,
+          style: TextStyles.textStyle22Bold,
+          textAlign: TextAlign.center,
         ),
         Text(
-          "Author Name",
+          "${book.volumeInfo!.authors?.first}",
           style: TextStyles.textStyle16.copyWith(
             color: Colors.grey,
             fontStyle: FontStyle.italic,

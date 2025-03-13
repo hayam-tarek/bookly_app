@@ -36,7 +36,7 @@ class TextStyles {
   );
   static const TextStyle textStyle22Bold = TextStyle(
     fontSize: 22,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.bold,
   );
   static const TextStyle textStyle24 = TextStyle(
     fontSize: 24,
