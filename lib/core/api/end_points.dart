@@ -10,6 +10,11 @@ class Endpoints {
     sorting: ApiKeys.relevance,
     filter: ApiKeys.freeEbooks,
   );
+  static String getRelatedBooks(String category) => getBooks(
+        query: category,
+        sorting: ApiKeys.relevance,
+        filter: ApiKeys.freeEbooks,
+      );
   static String getBooks({
     required String query,
     String? sorting,

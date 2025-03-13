@@ -14,11 +14,11 @@ class HomeRepoImplementation implements HomeRepo {
   Future<Either<Failure, List<BookModel>>> getFeaturedBooks() async {
     try {
       var data = await apiService.get(endPoint: Endpoints.getFeaturedBooks);
-      List<BookModel> newestBooks = [];
+      List<BookModel> featuredBooks = [];
       for (var item in data[ApiKeys.items]) {
-        newestBooks.add(BookModel.fromMap(item));
+        featuredBooks.add(BookModel.fromMap(item));
       }
-      return Right(newestBooks);
+      return Right(featuredBooks);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioException(e));
     } on Exception catch (e) {
@@ -35,6 +35,26 @@ class HomeRepoImplementation implements HomeRepo {
         newestBooks.add(BookModel.fromMap(item));
       }
       return Right(newestBooks);
+    } on DioException catch (e) {
+      return Left(ServerFailure.fromDioException(e));
+    } on Exception catch (e) {
+      return Left(ServerFailure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BookModel>>> getRelatedBooks({
+    required String category,
+  }) async {
+    try {
+      var data = await apiService.get(
+        endPoint: Endpoints.getRelatedBooks(category),
+      );
+      List<BookModel> relatedBooks = [];
+      for (var item in data[ApiKeys.items]) {
+        relatedBooks.add(BookModel.fromMap(item));
+      }
+      return Right(relatedBooks);
     } on DioException catch (e) {
       return Left(ServerFailure.fromDioException(e));
     } on Exception catch (e) {

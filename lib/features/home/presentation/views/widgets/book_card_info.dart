@@ -12,7 +12,7 @@ class BookCardInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.bookDetailsView);
+        GoRouter.of(context).push(AppRouter.bookDetailsView, extra: book);
       },
       child: ListTile(
         contentPadding: EdgeInsets.all(0),

@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
@@ -11,18 +12,24 @@ class AppRouter {
 
   static final router = GoRouter(
     routes: [
-      _buildPage(splashView, const SplashView()),
-      _buildPage(homeView, const HomeView()),
-      _buildPage(bookDetailsView, BookDetailsView()),
+      _buildPage(splashView, (state) => const SplashView()),
+      _buildPage(homeView, (state) => const HomeView()),
+      _buildPage(
+        bookDetailsView,
+        (state) => BookDetailsView(book: state.extra as BookModel),
+      ),
     ],
   );
 
-  static GoRoute _buildPage(String path, Widget page) {
+  static GoRoute _buildPage(
+    String path,
+    Widget Function(GoRouterState) pageBuilder,
+  ) {
     return GoRoute(
       path: path,
       pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: page,
+        child: pageBuilder(state),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(
