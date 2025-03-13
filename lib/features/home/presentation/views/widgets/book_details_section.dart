@@ -20,7 +20,7 @@ class BookDetailsSection extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width * 0.55,
           height: MediaQuery.sizeOf(context).height * 0.35,
           child: BookBannerItem(
-            imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
+            imageUrl: book.volumeInfo!.imageLinks?.thumbnail ?? '',
           ),
         ),
         Text(

@@ -1,9 +1,11 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/data/models/book_model/fake_book_model.dart';
 import 'package:bookly_app/features/home/presentation/view_model/featured_books/featured_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import 'book_banner_item.dart';
@@ -47,8 +49,14 @@ class BookBannersListViewBuilder extends StatelessWidget {
         itemExtent: MediaQuery.sizeOf(context).width * 0.40,
         children: List.generate(
           books.length,
-          (index) => BookBannerItem(
-            imageUrl: books[index].volumeInfo!.imageLinks!.thumbnail!,
+          (index) => InkWell(
+            onTap: () {
+              GoRouter.of(context)
+                  .push(AppRouter.bookDetailsView, extra: books[index]);
+            },
+            child: BookBannerItem(
+              imageUrl: books[index].volumeInfo!.imageLinks!.thumbnail!,
+            ),
           ),
         ),
       ),
