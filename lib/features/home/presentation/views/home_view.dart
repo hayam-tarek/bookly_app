@@ -18,6 +18,7 @@ class _HomeViewState extends State<HomeView> {
       floatingActionButton: showFAB
           ? FloatingActionButton(
               mini: true,
+              tooltip: 'Back to top',
               onPressed: () {
                 animateToBeginning();
               },

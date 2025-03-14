@@ -19,7 +19,7 @@ class BookCardInfo extends StatelessWidget {
         contentPadding: EdgeInsets.all(0),
         leading: CachedNetworkImage(
           errorWidget: (context, url, error) => const Icon(Icons.error),
-          imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
+          imageUrl: book.volumeInfo!.imageLinks?.thumbnail ?? '',
           fit: BoxFit.fill,
           width: 50,
           height: 100,
@@ -42,7 +42,7 @@ class BookCardInfo extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  book.volumeInfo!.publishedDate!,
+                  book.volumeInfo!.publishedDate ?? '',
                   style: TextStyles.textStyle14Bold,
                 ),
                 Spacer(),

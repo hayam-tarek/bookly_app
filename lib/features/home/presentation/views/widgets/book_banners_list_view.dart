@@ -45,21 +45,40 @@ class BookBannersListViewBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.25,
-      child: CarouselView(
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: books.length,
         itemExtent: MediaQuery.sizeOf(context).width * 0.40,
-        children: List.generate(
-          books.length,
-          (index) => InkWell(
-            onTap: () {
-              GoRouter.of(context)
-                  .push(AppRouter.bookDetailsView, extra: books[index]);
-            },
-            child: BookBannerItem(
-              imageUrl: books[index].volumeInfo!.imageLinks!.thumbnail!,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: GestureDetector(
+              onTap: () {
+                GoRouter.of(context)
+                    .push(AppRouter.bookDetailsView, extra: books[index]);
+              },
+              child: BookBannerItem(
+                imageUrl: books[index].volumeInfo!.imageLinks?.thumbnail ?? '',
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
+      // child: CarouselView(
+      //   itemExtent: MediaQuery.sizeOf(context).width * 0.40,
+      //   children: List.generate(
+      //     books.length,
+      //     (index) => InkWell(
+      //       onTap: () {
+      //         GoRouter.of(context)
+      //             .push(AppRouter.bookDetailsView, extra: books[index]);
+      //       },
+      //       child: BookBannerItem(
+      //         imageUrl: books[index].volumeInfo!.imageLinks?.thumbnail ?? '',
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
