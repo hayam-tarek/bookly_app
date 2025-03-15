@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utils/app_router.dart';
+import 'package:bookly_app/core/utils/functions/get_cost_of_book.dart';
 import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/rating.dart';
@@ -42,7 +43,7 @@ class BookCardInfo extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  book.volumeInfo!.publishedDate ?? '',
+                  getCostOfBook(book),
                   style: TextStyles.textStyle14Bold,
                 ),
                 Spacer(),

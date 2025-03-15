@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomSuccessToast {
   static void show(BuildContext context, String message,
-      {Duration duration = const Duration(seconds: 5)}) {
+      {Duration duration = const Duration(seconds: 3)}) {
     final overlay = Overlay.of(context);
     final overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
-        bottom: 104,
+        bottom: 50,
         left: 0,
         right: 0,
         child: Material(

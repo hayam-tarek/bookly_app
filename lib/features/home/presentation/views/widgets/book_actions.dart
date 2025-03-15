@@ -1,9 +1,10 @@
 import 'package:bookly_app/core/themes/app_colors.dart';
+import 'package:bookly_app/core/utils/functions/get_cost_of_book.dart';
+import 'package:bookly_app/core/utils/functions/lunch_url.dart';
 import 'package:bookly_app/core/widgets/custom_button.dart';
 import 'package:bookly_app/core/widgets/custom_error_toast.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class BookActions extends StatelessWidget {
   const BookActions({super.key, required this.book});
@@ -21,12 +22,10 @@ class BookActions extends StatelessWidget {
               topLeft: Radius.circular(20),
               bottomLeft: Radius.circular(0),
             ),
-            text: book.saleInfo?.saleability! == 'FOR_SALE'
-                ? "${book.saleInfo?.listPrice?.amount.toString()} ${book.saleInfo?.listPrice?.currencyCode.toString()}"
-                : "Free",
+            text: getCostOfBook(book),
             color: Colors.white,
             textColor: AppColors.secondaryColor,
-            onPressed: () {},
+            onPressed: null,
           ),
           CustomButton(
             borderRadius: BorderRadius.only(
@@ -39,24 +38,14 @@ class BookActions extends StatelessWidget {
             onPressed: () {
               final previewLink = book.volumeInfo?.previewLink;
               if (previewLink != null) {
-                try {
-                  _launchUrl(Uri.parse(previewLink));
-                } catch (e) {
-                  CustomErrorToast.show(context, e.toString());
-                }
+                launchThisUrl(Uri.parse(previewLink), context);
+              } else {
+                CustomErrorToast.show(context, 'No preview available');
               }
             },
           ),
         ],
       ),
     );
-  }
-}
-
-Future<void> _launchUrl(Uri url) async {
-  if (!await canLaunchUrl(url)) {
-    throw Exception('Could not launch $url');
-  } else {
-    await launchUrl(url);
   }
 }
