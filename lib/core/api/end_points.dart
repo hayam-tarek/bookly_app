@@ -1,7 +1,7 @@
 class Endpoints {
   static final String baseUrl = 'https://www.googleapis.com/books/v1/';
   static final String getNewestBooks = getBooks(
-    query: ApiKeys.programming,
+    query: ApiKeys.general,
     sorting: ApiKeys.newest,
     filter: ApiKeys.ebook,
   );
@@ -30,6 +30,7 @@ class ApiKeys {
   static const String items = 'items';
   static const String query = 'q'; // Query Parameters
   static const String programming = 'programming';
+  static const String general = 'general';
   static const String intitle = 'intitle:';
   static const String inauthor = 'inauthor:';
   static const String inpublisher = 'inpublisher:';

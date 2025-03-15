@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utils/assets.dart';
+import 'package:bookly_app/features/search/presentation/views/custom_search_delegate.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -16,7 +17,9 @@ class CustomAppBar extends StatelessWidget {
         ),
         IconButton(
           icon: const Icon(Icons.search),
-          onPressed: () {},
+          onPressed: () {
+            showSearch(context: context, delegate: CustomSearchDelegate());
+          },
         ),
       ],
     );
