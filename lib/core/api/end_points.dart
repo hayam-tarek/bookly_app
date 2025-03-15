@@ -3,17 +3,17 @@ class Endpoints {
   static final String getNewestBooks = getBooks(
     query: ApiKeys.programming,
     sorting: ApiKeys.newest,
-    filter: ApiKeys.freeEbooks,
+    filter: ApiKeys.ebook,
   );
   static String getFeaturedBooks = getBooks(
     query: ApiKeys.programming,
     sorting: ApiKeys.relevance,
-    filter: ApiKeys.freeEbooks,
+    filter: ApiKeys.ebook,
   );
   static String getRelatedBooks(String category) => getBooks(
         query: category,
         sorting: ApiKeys.relevance,
-        filter: ApiKeys.freeEbooks,
+        filter: ApiKeys.ebook,
       );
   static String getBooks({
     required String query,

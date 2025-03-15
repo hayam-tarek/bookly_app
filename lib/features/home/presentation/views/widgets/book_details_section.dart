@@ -2,8 +2,8 @@ import 'package:bookly_app/core/utils/text_styles.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
+import 'book_actions.dart';
 import 'book_banner_item.dart';
-import 'pricing_container.dart';
 import 'rating.dart';
 
 class BookDetailsSection extends StatelessWidget {
@@ -39,7 +39,7 @@ class BookDetailsSection extends StatelessWidget {
           rating: book.volumeInfo!.averageRating ?? 0.0,
           totalRatings: book.volumeInfo!.ratingsCount ?? 0,
         ),
-        PricingContainer(),
+        BookActions(book: book),
       ],
     );
   }
