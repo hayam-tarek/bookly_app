@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-import 'book_card_info.dart';
+import '../../../../../core/widgets/book_card_info.dart';
 
 class NewestBooksListView extends StatelessWidget {
   const NewestBooksListView({

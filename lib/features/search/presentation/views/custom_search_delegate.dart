@@ -1,10 +1,10 @@
 import 'package:bookly_app/core/di/service_locator.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/text_styles.dart';
+import 'package:bookly_app/core/widgets/book_card_info.dart';
 import 'package:bookly_app/core/widgets/custom_error_widget.dart';
 import 'package:bookly_app/core/widgets/custom_loading_widget.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_card_info.dart';
 import 'package:bookly_app/features/search/data/repo/search_repo_implementation.dart';
 import 'package:bookly_app/features/search/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:flutter/material.dart';
