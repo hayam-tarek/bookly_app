@@ -1,4 +1,6 @@
+import 'package:bookly_app/features/home/presentation/view_model/newest_books/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'widgets/home_view_body.dart';
 
@@ -12,6 +14,18 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   bool showFAB = false;
   final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          0.7 * _scrollController.position.maxScrollExtent) {
+        context.read<NewestBooksCubit>().fetchMoreNewestBooks();
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

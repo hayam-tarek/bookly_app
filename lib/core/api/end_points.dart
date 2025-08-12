@@ -1,26 +1,34 @@
 class Endpoints {
   static final String baseUrl = 'https://www.googleapis.com/books/v1/';
-  static final String getNewestBooks = getBooks(
-    query: ApiKeys.general,
-    sorting: ApiKeys.newest,
-    filter: ApiKeys.ebook,
-  );
+  static String getNewestBooks({int pageNumber = 0}) => getBooks(
+        query: ApiKeys.general,
+        sorting: ApiKeys.newest,
+        filter: ApiKeys.ebook,
+        pageNumber: pageNumber,
+        maxResults: 10,
+      );
   static String getFeaturedBooks = getBooks(
     query: ApiKeys.programming,
     sorting: ApiKeys.relevance,
     filter: ApiKeys.ebook,
+    pageNumber: 0,
+    maxResults: 20,
   );
   static String getRelatedBooks(String category) => getBooks(
         query: category,
         sorting: ApiKeys.relevance,
         filter: ApiKeys.ebook,
+        pageNumber: 0,
+        maxResults: 20,
       );
   static String getBooks({
     required String query,
     String? sorting,
     String? filter,
+    int? pageNumber = 0,
+    int? maxResults,
   }) {
-    return 'volumes?Filter=$filter&q=$query&orderBy=$sorting';
+    return 'volumes?Filter=$filter&q=$query&orderBy=$sorting&startIndex=${pageNumber! * 10}&maxResults=$maxResults';
   }
 }
 

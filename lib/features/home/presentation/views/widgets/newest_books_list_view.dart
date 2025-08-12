@@ -8,17 +8,31 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/widgets/book_card_info.dart';
 
-class NewestBooksListView extends StatelessWidget {
+class NewestBooksListView extends StatefulWidget {
   const NewestBooksListView({
     super.key,
   });
 
   @override
+  State<NewestBooksListView> createState() => _NewestBooksListViewState();
+}
+
+class _NewestBooksListViewState extends State<NewestBooksListView> {
+  List<BookModel> books = [];
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewestBooksCubit, NewestBooksState>(
-      builder: (context, state) {
+    return BlocConsumer<NewestBooksCubit, NewestBooksState>(
+      listener: (context, state) {
         if (state is NewestBooksSuccess) {
-          return NewestBooksListViewBuilder(books: state.books);
+          books = state.books;
+        }
+      },
+      builder: (context, state) {
+        if (state is NewestBooksSuccess ||
+            state is NewestBooksLoadingMore ||
+            state is NewestBooksNoMoreData) {
+          return NewestBooksListViewBuilder(books: books);
         } else if (state is NewestBooksFailure) {
           return SliverFillRemaining(
             child: CustomErrorWidget(message: state.message),

@@ -27,9 +27,14 @@ class HomeRepoImplementation implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> getNewestBooks() async {
+  Future<Either<Failure, List<BookModel>>> getNewestBooks(
+      {int pageNumber = 0}) async {
     try {
-      var data = await apiService.get(endPoint: Endpoints.getNewestBooks);
+      var data = await apiService.get(
+        endPoint: Endpoints.getNewestBooks(
+          pageNumber: pageNumber,
+        ),
+      );
       List<BookModel> newestBooks = [];
       for (var item in data[ApiKeys.items]) {
         newestBooks.add(BookModel.fromMap(item));

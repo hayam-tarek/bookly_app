@@ -10,6 +10,9 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
 
   final HomeRepo homeRepo;
   List<BookModel> books = [];
+  final int pageSize = 10;
+  int pageNumber = 0;
+  bool isLoadingMore = false;
 
   Future<void> fetchNewestBooks() async {
     emit(NewestBooksLoading());
@@ -17,6 +20,30 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
     result.fold(
       (failure) => emit(NewestBooksFailure(failure.message)),
       (books) => emit(NewestBooksSuccess(books)),
+    );
+  }
+
+  Future<void> fetchMoreNewestBooks() async {
+    final currentState = state;
+    if (isLoadingMore || currentState is! NewestBooksSuccess) return;
+
+    isLoadingMore = true;
+    pageNumber++;
+
+    emit(NewestBooksLoadingMore());
+
+    var result = await homeRepo.getNewestBooks(pageNumber: pageNumber);
+    result.fold(
+      (failure) {
+        isLoadingMore = false;
+        pageNumber--;
+        emit(NewestBooksNoMoreData(failure.message));
+      },
+      (books) {
+        this.books = (currentState).books + books;
+        emit(currentState.copyWith(books: this.books));
+        isLoadingMore = false;
+      },
     );
   }
 }
