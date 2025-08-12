@@ -9,6 +9,9 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchRepo) : super(SearchInitial());
   final SearchRepo searchRepo;
   List<BookModel> books = [];
+  final int pageSize = 10;
+  int pageNumber = 0;
+  bool isLoadingMore = false;
 
   Future<void> searchBooks({required String query}) async {
     emit(SearchLoading());
@@ -16,6 +19,31 @@ class SearchCubit extends Cubit<SearchState> {
     result.fold(
       (failure) => emit(SearchFailure(message: failure.message)),
       (books) => emit(SearchSuccess(books: books)),
+    );
+  }
+
+  Future<void> fetchMoreBooks({required String query}) async {
+    final currentState = state;
+    if (isLoadingMore || currentState is! SearchSuccess) return;
+
+    isLoadingMore = true;
+    pageNumber++;
+
+    emit(SearchLoadingMore());
+
+    var result =
+        await searchRepo.searchBooks(query: query, pageNumber: pageNumber);
+    result.fold(
+      (failure) {
+        isLoadingMore = false;
+        pageNumber--;
+        emit(SearchNoMoreData(message: failure.message));
+      },
+      (books) {
+        this.books = (currentState).books + books;
+        emit(SearchSuccess(books: this.books));
+        isLoadingMore = false;
+      },
     );
   }
 }

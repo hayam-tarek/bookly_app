@@ -14,11 +14,12 @@ class Endpoints {
     pageNumber: 0,
     maxResults: 20,
   );
-  static String getRelatedBooks(String category) => getBooks(
+  static String getRelatedBooks(String category, {int pageNumber = 0}) =>
+      getBooks(
         query: category,
         sorting: ApiKeys.relevance,
         filter: ApiKeys.ebook,
-        pageNumber: 0,
+        pageNumber: pageNumber,
         maxResults: 20,
       );
   static String getBooks({

@@ -13,6 +13,9 @@ import 'package:lottie/lottie.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   List<BookModel> listOfBooks = [];
+  final ScrollController scrollController = ScrollController();
+  SearchCubit? searchCubit;
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -32,28 +35,44 @@ class CustomSearchDelegate extends SearchDelegate {
       icon: const Icon(Icons.arrow_back_ios_new_rounded),
       onPressed: () {
         close(context, null);
+        scrollController.dispose();
       },
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
+    scrollController.addListener(() {
+      if (scrollController.position.pixels >=
+              0.7 * scrollController.position.maxScrollExtent &&
+          searchCubit != null) {
+        searchCubit!.fetchMoreBooks(query: query);
+      }
+    });
     return BlocProvider(
       create: (context) => SearchCubit(
         getIt.get<SearchRepoImplementation>(),
       )..searchBooks(query: query),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: BlocBuilder<SearchCubit, SearchState>(
+        child: BlocConsumer<SearchCubit, SearchState>(
+          listener: (context, state) {
+            if (state is SearchSuccess) {
+              listOfBooks = state.books;
+              searchCubit = context.read<SearchCubit>();
+            }
+          },
           builder: (context, state) {
             if (state is SearchLoading) {
               return const Center(child: CustomLoadingWidget());
-            } else if (state is SearchSuccess) {
-              listOfBooks = state.books;
+            } else if (state is SearchSuccess ||
+                state is SearchLoadingMore ||
+                state is SearchNoMoreData) {
               return ListView.builder(
-                itemCount: state.books.length,
+                controller: scrollController,
+                itemCount: listOfBooks.length,
                 itemBuilder: (context, index) {
-                  return BookCardInfo(book: state.books[index]);
+                  return BookCardInfo(book: listOfBooks[index]);
                 },
               );
             } else if (state is SearchFailure) {

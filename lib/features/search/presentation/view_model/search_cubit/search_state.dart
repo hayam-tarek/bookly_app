@@ -16,3 +16,10 @@ final class SearchFailure extends SearchState {
   final String message;
   SearchFailure({required this.message});
 }
+
+final class SearchLoadingMore extends SearchState {}
+
+final class SearchNoMoreData extends SearchState {
+  final String message;
+  SearchNoMoreData({required this.message});
+}

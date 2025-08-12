@@ -11,10 +11,13 @@ class SearchRepoImplementation implements SearchRepo {
   SearchRepoImplementation(this.apiService);
   @override
   Future<Either<Failure, List<BookModel>>> searchBooks(
-      {required String query}) async {
+      {required String query, int pageNumber = 0}) async {
     try {
-      var data =
-          await apiService.get(endPoint: Endpoints.getRelatedBooks(query));
+      var data = await apiService.get(
+          endPoint: Endpoints.getRelatedBooks(
+        query,
+        pageNumber: pageNumber,
+      ));
       List<BookModel> relatedBooks = [];
       for (var item in data[ApiKeys.items]) {
         relatedBooks.add(BookModel.fromMap(item));
